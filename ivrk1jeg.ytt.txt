@@ -1,0 +1,17 @@
+﻿Add auto_ptr and shared_ptr 
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   MyNoteHashtable.h
+#	new file:   MyNoteMemory.h
+#	new file:   boost_shared_ptr.h
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	.gitattributes
+#	.gitignore
+
