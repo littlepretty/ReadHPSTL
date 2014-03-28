@@ -823,7 +823,8 @@ hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
 
 template <class _Val, class _Key, class _HF, class _Ex, class _Eq, class _All>
 typename hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::size_type 
-hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::erase(const key_type& __key)
+hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
+  ::erase(const key_type& __key)
 {
   const size_type __n = _M_bkt_num_key(__key);
   _Node* __first = _M_buckets[__n];

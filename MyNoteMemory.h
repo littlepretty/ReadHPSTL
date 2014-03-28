@@ -1,5 +1,6 @@
 /// auto pointer, reference counting always = 1
-template <class _Tp> class auto_ptr 
+template <class _Tp> 
+class auto_ptr 
 {
 private:
 	_Tp* _M_ptr;
@@ -54,7 +55,8 @@ public:
 };
 
 
-class sp_counted_base {
+class sp_counted_base 
+{
 public:
     sp_counted_base(): use_count_(1), weak_count_(1)
     {
@@ -159,5 +161,39 @@ public:
 };  // shared_ptr
 
 
+
+/// examples
+// auto_ptr example
+#include <iostream>
+#include <memory>
+
+int main () {
+  std::auto_ptr<int> p1 (new int);
+  *p1.get()=10;
+
+  std::auto_ptr<int> p2 (p1);
+
+  std::cout << "p2 points to " << *p2 << '\n';
+  // (p1 is now null-pointer auto_ptr)
+
+  return 0;
+}
+
+// shared_ptr constructor example
+#include <iostream>
+#include <memory>
+
+struct C {int* data;};
+
+int main () {
+
+  std::shared_ptr<C> obj (new C);
+  std::shared_ptr<int> p (obj, obj->data);
+
+  std::cout << "use_count:\n";
+  std::cout << "p9: " << p.use_count() << '\n';
+
+  return 0;
+}
 
 
