@@ -1004,7 +1004,8 @@ void hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
 }
 
 template <class _Val, class _Key, class _HF, class _Ex, class _Eq, class _All>
-void hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>::clear()
+void hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
+  ::clear()
 {
   for (size_type __i = 0; __i < _M_buckets.size(); ++__i) {
     _Node* __cur = _M_buckets[__i];

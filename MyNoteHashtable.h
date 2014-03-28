@@ -243,3 +243,34 @@ hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
   }
   return __erased;
 }
+
+template <class _Val, class _Key, class _HF, class _Ex, class _Eq, class _All>
+void hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
+  ::_M_erase_bucket(const size_type __n, _Node* __last)
+{
+  _Node* __cur = _M_buckets[__n];
+  while (__cur != __last) {
+    _Node* __next = __cur->_M_next;
+    _M_delete_node(__cur);
+    __cur = __next;
+    _M_buckets[__n] = __cur;
+    --_M_num_elements;
+  }
+}
+
+
+template <class _Val, class _Key, class _HF, class _Ex, class _Eq, class _All>
+void hashtable<_Val,_Key,_HF,_Ex,_Eq,_All>
+  ::clear()
+{
+  for (size_type __i = 0; __i < _M_buckets.size(); ++__i) {
+    _Node* __cur = _M_buckets[__i];
+    while (__cur != 0) {
+      _Node* __next = __cur->_M_next;
+      _M_delete_node(__cur);
+      __cur = __next;
+    }
+    _M_buckets[__i] = 0;
+  }
+  _M_num_elements = 0;
+}
