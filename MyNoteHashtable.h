@@ -6,6 +6,55 @@ struct _Hashtable_node
 	_Val _M_val;
 };  
 
+/// hash func when key is string
+inline size_t __stl_hash_string(const char* __s)
+{
+  unsigned long __h = 0; 
+  for ( ; *__s; ++__s)
+    __h = 5*__h + *__s;
+  
+  return size_t(__h);
+}
+
+template <class _Key> struct hash { };
+
+/// use template specification to define every data type's hash func
+/// 1. for string or char*
+__STL_TEMPLATE_NULL struct hash<char*>
+{
+  size_t operator()(const char* __s) const { return __stl_hash_string(__s); }
+};
+/// 2. for char, unsigned char, signed char, short, unsigned short, int, unsigned int, long, 
+/// unsigned long, just return its raw value
+__STL_TEMPLATE_NULL struct hash<char> {
+  size_t operator()(char __x) const { return __x; }
+};
+__STL_TEMPLATE_NULL struct hash<unsigned char> {
+  size_t operator()(unsigned char __x) const { return __x; }
+};
+__STL_TEMPLATE_NULL struct hash<signed char> {
+  size_t operator()(unsigned char __x) const { return __x; }
+};
+__STL_TEMPLATE_NULL struct hash<short> {
+  size_t operator()(short __x) const { return __x; }
+};
+__STL_TEMPLATE_NULL struct hash<unsigned short> {
+  size_t operator()(unsigned short __x) const { return __x; }
+};
+__STL_TEMPLATE_NULL struct hash<int> {
+  size_t operator()(int __x) const { return __x; }
+};
+__STL_TEMPLATE_NULL struct hash<unsigned int> {
+  size_t operator()(unsigned int __x) const { return __x; }
+};
+__STL_TEMPLATE_NULL struct hash<long> {
+  size_t operator()(long __x) const { return __x; }
+};
+__STL_TEMPLATE_NULL struct hash<unsigned long> {
+  size_t operator()(unsigned long __x) const { return __x; }
+};
+
+
 template <class _Val, class _Key, class _HashFcn,
           class _ExtractKey, class _EqualKey, class _Alloc>
 struct _Hashtable_iterator 

@@ -332,7 +332,8 @@ template <class _Tp> struct identity : public _Identity<_Tp> {};
 
 // select1st and select2nd are extensions: they are not part of the standard.
 template <class _Pair>
-struct _Select1st : public unary_function<_Pair, typename _Pair::first_type> {
+struct _Select1st : public unary_function<_Pair, typename _Pair::first_type> 
+{
   const typename _Pair::first_type& operator()(const _Pair& __x) const {
     return __x.first;
   }
