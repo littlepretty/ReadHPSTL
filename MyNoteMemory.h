@@ -191,7 +191,7 @@ int main () {
   std::shared_ptr<int> p (obj, obj->data);
 
   std::cout << "use_count:\n";
-  std::cout << "p9: " << p.use_count() << '\n';
+  std::cout << "p: " << p.use_count() << '\n';
 
   return 0;
 }
